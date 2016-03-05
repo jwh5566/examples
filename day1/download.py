@@ -32,5 +32,6 @@ def crawl_sitemap(url):
         # scrape html here
         # ...
 
+
 # download('http://httpstat.us/500')
 crawl_sitemap('http://example.webscraping.com/sitemap.xml')
