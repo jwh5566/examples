@@ -46,4 +46,5 @@ def crawl_sitemap(url):
 
 
 # download('http://httpstat.us/500')
-crawl_sitemap('http://example.webscraping.com/sitemap.xml')
+if __name__ == '__main__':
+    crawl_sitemap('http://example.webscraping.com/sitemap.xml')
