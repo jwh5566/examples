@@ -1,0 +1,25 @@
+网站背景调查
+    robots.txt and  Sitemap
+
+1.Checking robots.txt
+
+2.Estimating the size of a website
+google搜索
+site:example.webscraping.com：
+
+3.Identifying the technology used by a website
+pip install builtwith
+
+>>> import builtwith
+>>> builtwith.parse('http://example.webscraping.com')
+
+{u'javascript-frameworks': [u'jQuery', u'Modernizr', u'jQuery UI'],
+u'programming-languages': [u'Python'],
+u'web-frameworks': [u'Web2py', u'Twitter Bootstrap'],
+u'web-servers': [u'Nginx']}
+
+4.Finding the owner of a website
+pip install python-whois
+
+>>> import whois
+>>> print whois.whois('appspot.com')
