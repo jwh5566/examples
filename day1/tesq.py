@@ -2,5 +2,3 @@
 print 'aaaaaaaaaaaaaaaaaaaaaaaaaa'
 
 print 'bbbbbbbbb'
-
-print 'ccccccccccc'
