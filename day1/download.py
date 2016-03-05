@@ -4,12 +4,19 @@
 """
 import urllib2
 import re
+import urlparse
 
 
-def download(url, user_agent='wswp', num_retries=2):
+def download(url, user_agent='wswp', proxy=None, num_retries=0):
     print 'Downloading:', url
+    # 设置用户代理
     headers = {'User-agent': user_agent}
     request = urllib2.Request(url, headers=headers)
+    # 支持代理的爬虫
+    opener = urllib2.build_opener()
+    if proxy:
+        proxy_params = {urlparse.urlparse(url).scheme: proxy}
+        opener.add_handler(urllib2.ProxyHandler(proxy_params))
     try:
         html = urllib2.urlopen(request).read()
     except urllib2.URLError as e:
@@ -22,6 +29,11 @@ def download(url, user_agent='wswp', num_retries=2):
 
 
 def crawl_sitemap(url):
+    """
+    站点地图url
+    :param url:
+    :return:
+    """
     # download the sitemap file
     sitemap = download(url)
     # extract the sitemap links
