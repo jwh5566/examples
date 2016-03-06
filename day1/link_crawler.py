@@ -4,7 +4,7 @@ from download import download
 import urlparse
 
 
-def link_crawler(seed_url, link_regex):
+def link_crawler(seed_url, link_regex, scrape_callback=None):
     """
         抓取匹配link_regex的url(seed_url+links)
     :param seed_url:
@@ -16,6 +16,9 @@ def link_crawler(seed_url, link_regex):
     while crawl_queue:
         url = crawl_queue.pop()
         html = download(url)
+        links = []
+        if scrape_callback:
+            links.extend(scrape_callback(url, html) or [])
         # 过滤匹配link_regex的链接
         for link in get_links(html):
             if re.match(link_regex, link):
@@ -35,4 +38,5 @@ def get_links(html):
     webpage_regex = re.compile('<a[^>]+href=["\'](.*?)["\']', re.IGNORECASE)
     return webpage_regex.findall(html)
 
-link_crawler('http://example.webscraping.com', '/(index|view)/')
+if __name__ == '__main__':
+    link_crawler('http://example.webscraping.com', '/(index|view)/')
