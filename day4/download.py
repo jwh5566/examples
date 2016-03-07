@@ -77,3 +77,4 @@ ajax = json.loads(html)
 for record in ajax['records']:
     row = [record[field] for field in FIELDS]
     writer.writerow(row)
+
