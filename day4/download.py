@@ -63,18 +63,19 @@ class Downloader:
 
 # http://example.webscraping.com/ajax/search.json?&search_term=B&page_size=10&page=0
 
-import csv
+# import csv
+#
+# FIELDS = ('pretty_link', 'country', 'id')
+# writer = csv.writer(open('countries.csv', 'w'))
+# writer.writerow(FIELDS)
+# D = Downloader()
+# html = D('http://example.webscraping.com/ajax/search.json?page=0&page_size=1000&search_term=.')
+# ajax = json.loads(html)
+# for record in ajax['records']:
+#     row = [record[field] for field in FIELDS]
+#     print row
+#     writer.writerow(row)
 
-FIELDS = ('area', 'population', 'iso', 'country', 'capital',
-'continent', 'tld', 'currency_code', 'currency_name', 'phone',
-'postal_code_format', 'postal_code_regex', 'languages',
-'neighbours')
-writer = csv.writer(open('countries', 'w'))
-writer.writerow(FIELDS)
-D = Downloader()
-html = D('http://example.webscraping.com/ajax/search.json?page=0&page_size=1000&search_term=.')
-ajax = json.loads(html)
-for record in ajax['records']:
-    row = [record[field] for field in FIELDS]
-    writer.writerow(row)
+# {u'pretty_link': u'<div><a href="/view/Afghanistan-1"><img src="/places/static/images/flags/af.png" /> Afghanistan</a></div>', u'country': u'Afghanistan', u'id': 636553}
+
 
